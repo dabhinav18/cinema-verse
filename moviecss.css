@@ -1,0 +1,561 @@
+
+ /* ===============================
+   GLOBAL RESET
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* HERO */
+.hero{
+  height:80vh;
+  position:relative;
+  overflow:hidden;
+  margin-top:0px;
+}
+
+.hero-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(10,10,33,0) 8%,
+      rgba(10,10,33,0.4) 82%,
+      rgba(10,10,33,0.75) 90%,
+      rgba(10,10,33,1) 100%
+    );
+  z-index:1;
+  pointer-events:none;
+}
+
+.hero-content{
+  position:absolute;
+  bottom: 36px;
+  left: 60px;
+  font-size: 25px;
+  animation: heroTextUp 1.2s ease forwards;
+  z-index:2;
+}
+#movieMeta{
+  font-size: 20px; /* reduce size */
+}
+
+
+/* SECTIONS */
+.section{
+  max-width:1000px;
+  margin:80px auto 80px 100px;
+  padding:0 40px;
+}
+.section h2{
+  margin-bottom:3px;
+}
+
+#movieTitle {
+  margin-bottom: 12px; /* space BELOW title */
+}
+
+#movieMeta {
+  margin-top: 8px; /* space ABOVE meta */
+}
+
+
+/* ============================= */
+/* OVERVIEW */
+/* ============================= */
+.section h2{
+  margin-bottom: 20px; /* space below "Overview" */
+}
+
+.section p{
+  font-size:18px;
+  line-height:1.9;
+  color:#e4e4e4;
+  max-width:900px;
+}
+/* CAST & CREW */
+.people-wrapper{
+  display:flex;
+  gap:40px;
+  overflow-x:auto;
+  padding-bottom:10px;
+}
+.people-wrapper::-webkit-scrollbar{
+  height:6px;
+}
+.people-wrapper::-webkit-scrollbar-thumb{
+  background:#333;
+  border-radius:10px;
+}
+
+.person{
+  min-width:140px;
+  text-align:center;
+}
+.person img{
+  width:125px;
+  height:125px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #222;
+}
+.person h4{
+  margin-top:12px;
+  font-size:15px;
+}
+.person p{
+  font-size:13px;
+  color:#aaa;
+}
+.people-title{
+  margin-left: -8px;
+  margin-top: -19px;
+  margin-bottom: 25px;
+}
+
+.people-wrapper{
+  padding-top: 20px; /* ensures visible gap */
+}
+
+
+/* DIVIDER */
+.divider{
+  height:1px;
+  background:#5b3a3a;
+  margin:60px 0;
+
+}
+
+
+/* ===============================
+   AUDIENCE METER (PREMIUM)
+   =============================== */
+
+/* Section center */
+.meter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Meter wrapper */
+.premium-meter {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin-top: 20px;
+}
+
+/* Rotate SVG so progress starts from top */
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+/* Background ring */
+.ring-bg {
+  fill: none;
+  stroke: #222;
+  stroke-width: 14;
+}
+
+/* ===============================
+   MULTI COLOR REVIEW ARCS
+   =============================== */
+
+.arc {
+  fill: none;
+  stroke-width: 14;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.2s ease;
+}
+
+/* Match review button colors */
+.arc.skip {
+  stroke: #666; /* Skip */
+}
+
+.arc.timepass {
+  stroke: #f5c542; /* Timepass */
+}
+
+.arc.good {
+  stroke: #2ecc71; /* Good */
+}
+
+.arc.outstanding {
+  stroke: #9b59b6; /* Outstanding */
+}
+
+/* Glow effect for positive reviews */
+.arc.good,
+.arc.outstanding {
+  filter: drop-shadow(0 0 6px rgba(0, 255, 120, 0.6))
+          drop-shadow(0 0 12px rgba(155, 89, 182, 0.6));
+}
+
+
+
+/* ===============================
+   CENTER TEXT 
+   =============================== */
+
+.meter-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Percentage */
+.meter-text h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Vote count */
+.meter-text p {
+  font-size: 13px;
+  color: #aaaaaa;
+  margin-top: 6px;
+}
+
+/* ===============================
+   METER LEGEND for space and size beteen skip good timepass outstanding
+   =============================== */
+
+.meter-legend {
+  display: flex;
+  gap: 80px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+   font-size: 18px; /* bigger text */
+  gap: 6px;
+  color: #ccc;
+}
+
+.legend-item b {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Colored dots */
+.legend-item .dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+/* Match arc colors */
+.legend-item.skip .dot {
+  background: #666;
+}
+
+.legend-item.timepass .dot {
+  background: #f5c542;
+}
+
+.legend-item.good .dot {
+  background: #2ecc71;
+}
+
+.legend-item.outstanding .dot {
+  background: #9b59b6;
+}
+/* meter end *
+
+
+  /* ===============================
+   PREMIUM REVIEW FORM
+================================ */
+
+.review-card{
+  background: linear-gradient(145deg, #141423, #0f0f1a);
+  border-radius: 22px;
+  margin-top: 18px;
+  padding: 22px 24px;
+}
+
+.review-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.user-info{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#64748b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+
+.username{
+  font-size:15px;
+  font-weight:600;
+}
+
+/* Pills */
+.rating-pills{
+  display:flex;
+  gap:10px;
+}
+
+.pill{
+  min-width:120px;
+  height:38px;
+  border-radius:999px;
+  background:transparent;
+  border:1px solid #333;
+  color:#fff;
+  cursor:pointer;
+}
+
+.pill.skip.active{background:#ef4444}
+.pill.timepass.active{background:#fbbf24;color:#000}
+.pill.good.active{background:#22c55e;color:#000}
+.pill.outstanding.active{background:#8b5cf6}
+
+/* Textarea */
+.review-input{
+  width:100%;
+  height:70px;
+  margin-top:18px;
+  background:transparent;
+  border:none;
+  border-bottom:1px solid #333;
+  font-size:20px;
+  outline: none;
+  color:#e5e7eb;
+  resize:none;
+}
+
+.review-input::placeholder{
+  font-size:16px;
+  color:#94a3b8;
+}
+
+/* Footer */
+.review-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:12px;
+}
+
+.post-btn{
+  padding:10px 30px;
+  border-radius:999px;
+  background:#fff;
+  color:#000;
+  border:none;
+  font-weight:600;
+}
+
+/* Posted review badge */
+.review-badge{
+  width:120px;
+  text-align:center;
+  padding:6px 16px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.review-badge.skip{background:#ef4444}
+.review-badge.timepass{background:#fbbf24;color:#000}
+.review-badge.good{background:#22c55e;color:#000}
+.review-badge.outstanding{background:#8b5cf6}
+
+
+.post-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(255,255,255,.25);
+}
+
+/* Comment layout */
+.comment {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 24px;
+  align-items: flex-start;
+}
+
+/* Letter avatar */
+.avatar-letter {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #475569; /* slate color */
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 18px;
+  margin-top:25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+/* Username */
+.comment-username {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* Review text */
+.comment-text {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.comment img{
+  margin-top:25px;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+}
+
+.comment-card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:14px;
+  margin-top:25px;
+  margin-bottom: -23px;
+  width: 95%;
+  padding:14px;
+}
+
+/* ===============================
+   REVIEW BADGES (FIX)
+================================ */
+.badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1;
+}
+
+/* Badge colors */
+.badge.skip {
+  background: #ef4444;      /* red */
+}
+
+.badge.timepass {
+  background: #38bdf8;      /* blue */
+}
+
+.badge.good {
+  background: #22c55e;      /* green */
+}
+
+.badge.outstanding {
+  background: #8b5cf6;      /* purple */
+} 
+
+@media(max-width:768px){
+  .section{
+    margin:60px auto;
+    padding:0 20px;
+  }
+}
+
+/* ============================= */
+/* HERO POSTER ANIMATION */
+/* ============================= */
+
+@keyframes heroTextUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* ============================= */
+/* CAST & CREW CARD ANIMATION */
+/* ============================= */
+
+.person{
+  transition:all .35s ease;
+}
+
+.person:hover{
+  transform:translateY(-6px) scale(1);
+}
+
+
+.person img{
+  transition:all .35s ease;
+}
+
+.person:hover img{
+  box-shadow:0 20px 40px rgba(0,0,0,.7);
+}
+
+/* ============================= */
+/* SCROLLBAR SMOOTH LOOK */
+/* ============================= */
+
+.people-wrapper{
+  scroll-behavior:smooth;
+}
+
+/* ===== PAGE LOAD ANIMATION ===== */
+.page-load {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: pageFadeIn 0.0s ease forwards;
+}
+
+@keyframes pageFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

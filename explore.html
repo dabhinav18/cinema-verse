@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CinemaVerse | Explore</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="cst.css" />    
+<style>
+
+  /* ===================================== */
+/* 📱💻 TABLET RESPONSIVE (4 Posters) */
+/* ===================================== */
+
+@media screen and (min-width: 720px) and (max-width: 1024px) {
+
+  /* Navbar spacing */
+  .navbar {
+    padding: 12px 24px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  /* Search size */
+  #searchBox {
+    width: 150px;
+    height: 34px;
+    font-size: 14px;
+  }
+
+  /* Main spacing */
+  main {
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .section {
+    padding: 25px 0;
+  }
+
+  .section h2 {
+    font-size: 22px;
+    text-align: left;
+  }
+
+  /* 🔥 4 Posters Per Row */
+  .card-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+
+  .card span {
+    font-size: 12px;
+  }
+
+}
+
+   /* ===============================
+   POSTER LOAD ANIMATION ONLY
+================================ */
+.card {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+/* When loaded */
+.card.card-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* When searching, force cards visible */
+body.searching .card {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+main {
+  min-height: 100vh;
+}
+
+
+/* ===================================== */
+/* 🍎 iPhone 12 Pro (390px) Responsive */
+/* ===================================== */
+
+@media screen and (max-width: 430px) {
+
+  /* NAVBAR STACK */
+  .navbar {
+    flex-wrap: wrap;
+    padding: 12px 14px;
+    height: auto;
+  }
+
+  .left-nav {
+    width: 50%;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  /* 🔥 Search below logo */
+  #searchBox {
+    width: 40%;
+    height: 30px;
+    margin: 10px 0;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  /* Nav links */
+  .nav-links {
+    width: 100%;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-top: 1px;
+  }
+
+  .nav-links a,
+  .profile-btn {
+    font-size: 13px;
+  }
+
+  /* Main spacing */
+  main {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .section {
+    padding: 20px 0;
+  }
+
+  /* 🔥 Smaller headings (not 1px 😅) */
+  .section h2 {
+    margin-top: 16px;
+    font-size: 19px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  /* 🔥 Exactly 2 posters per row */
+  .card-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .card img {
+    width: 150px;
+    height: 225px;
+    border-radius: 4px;
+  }
+
+  .card p {
+    font-size: 13px;
+    margin-top: 6px;
+  }
+
+  .card span {
+    font-size: 11px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="left-nav">
+    <div class="logo">Cinema verse</div>
+  </div>
+  
+<input 
+  type="search"
+  id="searchBox"
+  placeholder="🔍 Search movies..."
+  autocomplete="new-password"
+  autocorrect="off"
+  autocapitalize="off"
+  spellcheck="false"
+  name="no-history"
+/>
+
+
+  <nav class="nav-links">
+  <a href="explore.html"class="active">Explore</a>
+    <a href="upcoming.html">Upcoming</a>
+    <a href="about.html">About</a>
+
+    <div class="profile-menu" id="profileMenu">
+    <button class="profile-btn" id="profileBtn">Profile</button>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="profile.html">My Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="index.html" class="logout">Logout</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ================= MAIN ================= -->
+<main>
+
+<!-- 🔥 TRENDING MOVIES (ONLY THESE ARE CLICKABLE) -->
+<section class="section">
+  <h2>🔥 Trending Movies Of This Week 🔥</h2>
+
+  <div class="card-row">
+
+<article class="card trending-card" data-movie="rajasaab" data-title="Rajasaab">
+  <img src="Images/rajasa444.avif" alt="Raja Saab">
+  <p>Raja Saab</p>
+ <span class="badge new">New Movie</span>
+</article>
+
+
+<article class="card trending-card" data-movie="daredevil" data-title="Daredevil">
+  <img src="Images/Daredevil Season_2.jpg" alt="Daredevil">
+  <p>Daredevil: Born Again</p>
+ <span class="badge new">S02 Teaser Trailer</span>
+
+</article>
+
+ <article class="card trending-card" data-movie="dhurandhar" data-title="Dhurandar">
+   <img src="Images/Dhurandhar_poster.jpg" alt="Dhurandar"/>
+   <p>Dhurandhar</p>
+   <span>New Movie</span>
+ </article>       
+
+    <article class="card trending-card" data-movie="border2" data-title="Border2">
+      <img src="Images/Border 2.jpg" alt="Border-2">
+      <p>Border 2</p>
+      <span>Trending</span>
+    </article>
+
+    <article class="card trending-card" data-movie="mardaani3" data-title="Mardaani 3">
+      <img src="Images/mardaani3.png" alt="Mardaani 3">
+      <p>Mardaani 3</p>
+      <span>Trending</span>
+    </article>
+
+  </div>
+</section>
+
+<!-- 🎬 NETFLIX PICKS (NOT CLICKABLE)-->
+<section class="section">
+  <h2>🎬 Don't Miss These on Netflix 🎬</h2>
+
+  <div class="card-row">
+    <article class="card trending-card" data-movie="Vadh" data-title="Vadh">
+      <img src="Images/Vadh.png" alt="Vadh">
+      <p>Vadh</p>
+      <span>Netflix</span>
+    </article>
+
+    <article class="card trending-card" data-movie="Run Away" data-title="Run Away">
+      <img src="Images/Run Away.png" alt="Run Away">
+      <p>Run Away</p>
+      <span>Netflix</span>
+    </article>
+
+    <article class="card trending-card" data-movie="My Hero Academia Vigilantes" data-title="My Hero Academia Vigilantes">
+      <img src="Images/My hero Academia Vigilantes.png" alt="My Hero Academia Vigilantes">
+      <p>My Hero Academia Vigilantes</p>
+      <span>Netflix</span>
+    </article>
+
+    <article class="card trending-card" data-movie="As You Stoood By" data-title="As You Stoood By">
+      <img src="Images/As You Stoood By.png" alt="As You Stoood By">
+      <p>As You Stoood By</p>
+      <span>Netflix</span>
+    </article>
+
+    <article class="card trending-card" data-movie="Red Notice" data-title="Red Notice">
+      <img src="Images/Netflix Images/Red Notice_.jpg" alt="Red Notice">
+      <p>Red Notice</p>
+      <span>Netflix</span>
+    </article>
+  </div>
+</section>
+
+
+<!-- Hotstar -->
+<section class="section">
+  <h2>🎥 Don't Miss These on JioHotstar 🎥</h2>
+
+  <div class="card-row">
+
+    <article class="card trending-card" data-movie="The Paper" data-title="The Paper">
+      <img src="Images/The Paper.png" alt="The Paper">
+      <p>The Paper</p>
+      <span>Hotstar</span>
+    </article>
+
+
+    <article class="card trending-card" data-movie="Sarvam Maya" data-title="Sarvam Maya">
+      <img src="Images/Sarvam Maya.png" alt="Sarvam Maya">
+      <p>Sarvam Maya</p>
+      <span>Hotstar</span>
+    </article>
+
+    <article class="card trending-card" data-movie="Ushio and Tora" data-title="Ushio and Tora">
+      <img src="Images/Ushio and Tora.png" alt="Ushio and Tora">
+      <p>Ushio and Tora</p>
+      <span>Hotstar</span>
+    </article>
+
+    <article class="card trending-card" data-movie="Olive Kitteridge" data-title="Olive Kitteridge">
+      <img src="Images/Olive Kitteridge.png" alt="Olive Kitteridge">
+      <p>Olive Kitteridge</p>
+      <span>Hotstar</span>
+    </article>
+  </div>
+</section>
+
+
+<!-- Amezon Prime -->
+<section class="section">
+  <h2>📺 Worth Watching on Prime 📺</h2>
+
+  <div class="card-row">
+    <article class="card trending-card" data-movie="Fallout" data-title="Fallout">
+      <img src="Images/Fallout.png" alt="Fallout">
+      <p>Fallout</p>
+      <span>Prime</span>
+    </article>
+
+    <article class="card trending-card" data-movie="Batman Caped Crusader" data-title="Batman Caped Crusader">
+      <img src="Images/Batman Caped Crusader.png" alt="Batman Caped Crusader">
+      <p>Batman Caped Crusader</p>
+      <span>Prime</span>
+    </article>
+
+    <article class="card trending-card" data-movie="3BHK" data-title="3BHK">
+      <img src="Images/3BHK.png" alt="3BHK">
+      <p>3BHK</p>
+      <span>Prime</span>
+    </article>
+
+    <article class="card trending-card" data-movie="Nari Nari Naduma Murari" data-title="Nari Nari Naduma Murari">
+      <img src="Images/Nari Nari Naduma Murari.png" alt="Nari Nari Naduma Murari">
+      <p>Nari Nari Naduma Murari</p>
+      <span>Prime</span>
+    </article>
+
+    <article class="card trending-card" data-movie="A Place Further Than The Universe" data-title="A Place Further Than The Universe">
+      <img src="Images/A Place Further Than The Universe.png" alt="A Place Further Than The Universe">
+      <p>A Place Further Than The Universe</p>
+      <span>Prime</span>
+    </article>
+  </div>
+</section>
+
+
+
+<!-- 📺 MX PLAYER (NOT CLICKABLE) -->
+<section class="section">
+  <h2>😎 MX Player Originals 😎</h2>
+
+  <div class="card-row">
+    <article class="card trending-card" data-movie="Bhay" data-title="Bhay">
+      <img src="Images/Bhay.png" alt="Bhay">
+      <p>Bhay</p>
+      <span>MX Player</span>
+    </article>
+
+    <article class="card trending-card" data-movie="Half CA" data-title=" Half CA">
+      <img src="Images/Half CA.png" alt="Half CA">
+      <p>Half CA</p>
+      <span>MX Player</span>
+    </article>
+
+    <article class="card trending-card" data-movie="Nice To Not Meet You" data-title="Nice To Not Meet You">
+      <img src="Images/Nice To Not Meet You.png" alt="Nice To Not Meet You">
+      <p>Nice To Not Meet You</p>
+      <span>MX Player</span>
+    </article>
+
+    <article class="card trending-card" data-movie="Aukaat ke Bahar" data-title="Aukaat ke Bahar">
+      <img src="Images/Aukaat ke Bahar.png" alt="Aukaat ke Bahar">
+      <p>Aukaat ke Bahar</p>
+      <span>MX Player</span>
+    </article>
+
+    <article class="card trending-card" data-movie="Jailer" data-title="Jailer">
+      <img src="Images/Jailer.png" alt="Jailer">
+       <p>Jailer</p>
+      <span>MX Player</span>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ======================================
+     MOVIE CARD NAVIGATION
+  ====================================== */
+  const movieCards = document.querySelectorAll(".trending-card");
+
+  movieCards.forEach(card => {
+    card.addEventListener("click", () => {
+      const movieKey = card.dataset.movie;
+      if (!movieKey) return;
+
+      document.body.classList.add("navigating");
+      window.location.assign(`movie.html?movie=${movieKey}`);
+    });
+  });
+
+  /* ======================================
+     SEARCH SYSTEM (FINAL VERSION)
+  ====================================== */
+
+  const searchBox = document.getElementById("searchBox");
+  const sections = document.querySelectorAll(".section");
+
+  // Create "No Results" message
+  const noResult = document.createElement("div");
+  noResult.textContent = "🎬 No movies found";
+  noResult.style.textAlign = "center";
+  noResult.style.padding = "40px";
+  noResult.style.fontSize = "20px";
+  noResult.style.display = "none";
+  document.querySelector("main").appendChild(noResult);
+
+  searchBox.addEventListener("input", () => {
+
+    const query = searchBox.value.toLowerCase().trim();
+    document.body.classList.toggle("searching", query !== "");
+
+    let totalMatches = 0;
+
+    sections.forEach(section => {
+
+      const heading = section.querySelector("h2");
+      const cards = section.querySelectorAll(".card");
+
+      // 🔥 Hide headings while searching
+      if (query !== "") {
+        heading.style.display = "none";
+      } else {
+        heading.style.display = " ";
+      }
+
+      cards.forEach(card => {
+
+        const title =
+          card.querySelector("p")?.textContent.toLowerCase().trim() || "";
+
+        const badge =
+          card.querySelector("span")?.textContent.toLowerCase().trim() || "";
+
+        const match =
+          title.includes(query) ||
+          badge.includes(query);
+
+        if (query === "" || match) {
+          card.style.display = "block";
+          totalMatches++;
+        } else {
+          card.style.display = "none";
+        }
+
+      });
+
+    });
+
+    // Show "No movies found"
+    if (query !== "" && totalMatches === 0) {
+      noResult.style.display = "block";
+    } else {
+      noResult.style.display = "none";
+    }
+
+  });
+
+  /* ======================================
+     CARD LOAD ANIMATION
+  ====================================== */
+
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach((card, index) => {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        card.classList.add("card-visible");
+      }, index * 40);
+    });
+  });
+
+});
+</script>
+
+
+
+
+<script src="jst.js"></script>
+
+</body>
+</html>

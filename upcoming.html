@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
+  <title>Cinema Verse | Upcoming Movies</title>
+  <link rel="stylesheet" href="cst.css" />
+<style>
+
+  /* ===============================
+   🎬 LEFT TRANSPARENT CATEGORY FILTER
+=============================== */
+/* ===============================
+   🎬 CATEGORY FILTER WITH BORDER
+=============================== */
+.category-bar {
+  display: flex;
+  gap: 14px;
+  margin: 20px 0 15px 0;
+  justify-content: flex-start;
+  padding-left: 120px; /* 👈 increase this */
+}
+.category-btn {
+  background: transparent;
+  border: 1px solid #444;
+  color: #aaa;
+  font-size: 14px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.category-btn:hover {
+  border-color: #e50914;
+  color: #fff;
+}
+
+/* Active */
+.category-btn.active {
+  border-color: #e50914;
+  background: #e50914;
+  color: #fff;
+}
+   /* ===============================
+   POSTER LOAD ANIMATION ONLY
+================================ */
+.card {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+/* When loaded */
+.card.card-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* When searching, force cards visible */
+body.searching .card {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+main {
+  min-height: 100vh;
+}
+
+
+/* ===================================== */
+/* 🍎 iPhone 12 Pro (390px) Responsive */
+/* ===================================== */
+
+@media screen and (max-width: 430px) {
+
+  /* NAVBAR STACK */
+  .navbar {
+    flex-wrap: wrap;
+    padding: 12px 14px;
+    height: auto;
+  }
+
+  .left-nav {
+    width: 50%;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  /* 🔥 Search below logo */
+  #searchBox {
+    width: 40%;
+    height: 30px;
+    margin: 10px 0;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  /* Nav links */
+  .nav-links {
+    width: 100%;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-top: 1px;
+  }
+
+  .nav-links a,
+  .profile-btn {
+    font-size: 13px;
+  }
+
+  /* Main spacing */
+  main {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .section {
+    padding: 20px 0;
+  }
+
+  /* 🔥 Smaller headings (not 1px 😅) */
+  .section h2 {
+    margin-top: 16px;
+    font-size: 19px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  /* 🔥 Exactly 2 posters per row */
+  .card-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .card img {
+    width: 150px;
+    height: 225px;
+    border-radius: 4px;
+  }
+
+  .card p {
+    font-size: 13px;
+    margin-top: 6px;
+  }
+
+  .card span {
+    font-size: 11px;
+  }
+
+}
+
+</style>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="left-nav">
+    <div class="logo">Cinema verse</div>
+  </div>
+
+ <input 
+  type="search"
+  id="searchBox"
+  placeholder="🔍 Search movies..."
+  autocomplete="new-password"
+  autocorrect="off"
+  autocapitalize="off"
+  spellcheck="false"
+  name="no-history"
+/>
+
+
+  <nav class="nav-links">
+    <a href="explore.html">Explore</a>
+    <a href="upcoming.html" class="active">Upcoming</a>
+    <a href="about.html">About</a>
+
+    <div class="profile-menu" id="profileMenu">
+      <button class="profile-btn" id="profileBtn">Profile</button>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="profile.html">My Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="#" class="logout">Logout</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- 🎬 CATEGORY FILTER -->
+<div class="category-bar">
+  <button class="category-btn active" data-category="all">All</button>
+  <button class="category-btn" data-category="bollywood">Bollywood</button>
+  <button class="category-btn" data-category="hollywood">Hollywood</button>
+  <button class="category-btn" data-category="south">South</button>
+  <button class="category-btn" data-category="webshow">Web Shows</button>
+</div>
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="section">
+
+      <h2>🎬 Upcoming Movies 🎬</h2>
+
+      <div class="card-row">
+
+        <article class="card" data-title="Toxic: A Fairy Tale for Grownups">
+          <img src="Upcoming Images/Toxic A fairy tale for grownups.jpg" alt="Toxic: A Fairy Tale for Grownups"/>
+          <p>Toxic: A Fairy Tale for Grownups</p>
+          <span>March 2026</span>
+        </article>
+
+        <article class="card" data-title="o romeo">
+          <img src="Upcoming Images/o romeo.jpg" alt="O'romeo"/>
+          <p>O'romeo</p>
+          <span>Feb 2026</span>
+        </article>
+
+         <article class="card" data-title="Dacoit">
+          <img src="Upcoming Images/dacoit.jpg" />
+          <p>Dacoit</p>
+          <span>March 2026</span>
+        </article>
+
+        <article class="card" data-title="Paradise">
+          <img src="Upcoming Images/Paradise.jpg" alt="Paradise"/>
+          <p>Paradise</p>
+          <span>2026</span>
+        </article>
+
+        <article class="card" data-title="Bhoot Bangla">
+          <img src="Upcoming Images/Bhooth Bangla.jpg" />
+          <p>Bhoot Bangla</p>
+          <span>2026</span>
+        </article>
+
+        <article class="card" data-title="Battle of Galwan">
+          <img src="Upcoming Images/Battle of Galwan.jpg" alt="Battle of Galwan" />
+          <p>Battle of Galwan</p>
+          <span>2026</span>
+        </article>
+
+
+        <article class="card" data-title="chatha pacha">
+          <img src="Upcoming Images/chatha pacha.jpg" alt="Chatha Pacha"/>
+          <p>Chatha Pacha</p>
+          <span>Releasing 2026</span>
+        </article>
+
+        <article class="card" data-title="peddi">
+          <img src="Upcoming Images/Peddi.jpg" alt="Peddi"/>
+          <p>Peddi</p>
+          <span>Coming Soon</span>
+        </article>
+
+        <article class="card" data-title="Chiranjeevi Hanuman">
+          <img src="Upcoming Images/Chiranjeevi Hanuman.jpg" alt="Chiranjeevi Hanuman"/>
+          <p>Chiranjeevi Hanuman</p>
+          <span>Coming Soon</span>
+        </article>
+
+        <article class="card" data-title="Dhurandar Part Two">
+          <img src="Upcoming Images/Dhurandar part two.jpg" alt="Dhurandar part two"/>
+          <p>Dhurandar Part Two</p>
+          <span>March 2026</span>
+        </article>
+
+        <article class="card" data-title="Drishyam 3">
+          <img src="Upcoming Images/Drishyam 3.jpg" alt="Drishyam 3" />
+          <p>Drishyam 3</p>
+          <span>Coming Soon</span>
+        </article>
+
+        <article class="card" data-title="Do Deewane Seher mein">
+          <img src="Upcoming Images/do deewane seher mein.jpg" alt="Do Deewane Seher mein"/>
+          <p>Do Deewane Seher mein</p>
+          <span>2026</span>
+        </article>
+
+        <article class="card" data-title="Hotspot 2">
+          <img src="Upcoming Images/hotspot 2.jpg" alt="Hotspot 2"/>
+          <p>Hotspot 2</p>
+          <span>2026</span>
+        </article>
+
+         <article class="card" data-title="KD The devil">
+          <img src="Upcoming Images/KD The devil.jpg" alt="KD The devil"/>
+          <p>KD The devil</p>
+          <span>2026</span>
+        </article>
+
+         <article class="card" data-title="Love and War">
+          <img src="Upcoming Images/Love and War.jpg" alt="Love and War"/>
+          <p>Love and War</p>
+          <span>2027</span>
+        </article>
+
+         <article class="card" data-title="Naagzilla">
+          <img src="Upcoming Images/naagzilla.jpg" alt="Naagzilla"/>
+          <p>Naagzilla</p>
+          <span>2026</span>
+        </article>
+
+         <article class="card" data-title="Awarapan 2">
+          <img src="Upcoming Images/Awarapan.jpg" alt="Awarapan 2"/>
+          <p>Awarapan 2</p>
+          <span>2026</span>
+        </article>
+
+         <article class="card" data-title="Pati Patni Aur Wo Do">
+          <img src="Upcoming Images/pati patni aur wo do.jpg" alt="Pati Patni Aur Wo Do"/>
+          <p>Pati Patni Aur Wo Do</p>
+          <span>2026</span>
+        </article>
+
+         <article class="card" data-title="Raja Shivaji">
+          <img src="Upcoming Images/Raja Shivaji.jpg" alt="Raja Shivaji"/>
+          <p>Raja Shivaji</p>
+          <span>2026</span>
+        </article>
+
+         <article class="card" data-title="Vadh 2">
+          <img src="Upcoming Images/Vadh 2.jpg" alt="Vadh 2"/>
+          <p>Vadh 2</p>
+          <span>2026</span>
+        </article>
+
+         <article class="card" data-title="Veer Murarbaji">
+          <img src="Upcoming Images/Veer Murarbaji.jpg" alt="Veer Murarbaji"/>
+          <p>Veer Murarbaji</p>
+          <span>2026</span>
+        </article>
+
+         <article class="card" data-title="Vijaynagarer Heere">
+          <img src="Upcoming Images/Vijaynagarer Heere.jpg" alt="Vijaynagarer Heere"/>
+          <p>Vijaynagarer Heere</p>
+          <span>2026</span>
+        </article>
+
+         <article class="card" data-title="Kalki 2">
+          <img src="Upcoming Images/Kalki 2.jpg" alt="Kalki 2"/>
+          <p>Kalki 2</p>
+          <span>2026</span>
+        </article>
+
+        <article class="card" data-title="Salaar 2">
+          <img src="Upcoming Images/Salaar 2.jpg" alt="Salaar 2"/>
+          <p>Salaar 2</p>
+          <span>2026</span>
+      </div>
+      </article>
+
+    </section>
+
+    <section class="section">
+
+      <h2>📺 Upcoming on OTT 📺</h2>
+
+      <div class="card-row">
+
+        <article class="card" data-title="Tere Ishk mein">
+          <img src="Upcoming Images/OTT Images/Tere Ishk Mein.jpg" alt="Tere Ishk mein"/>
+          <p>Tere Ishk mein</p>
+          <span>Amazon Prime Video - March 2026</span>
+        </article>
+
+        <article class="card" data-title="Cheekatilo">
+          <img src="Upcoming Images/OTT Images/Cheekatilo.jpg" alt="Cheekatilo"/>
+          <p>Cheekatilo</p>
+          <span>Netflix - April 2026</span>
+        </article>
+
+         <article class="card" data-title="Eternity">
+          <img src="Upcoming Images/OTT Images/Eternity.jpg" alt="Eternity"/>
+          <p>Eternity</p>
+          <span>Disney Hotstar - Feb 2026</span>
+        </article>
+
+        <article class="card" data-title="Peaky Blinders">
+          <img src="Upcoming Images/OTT Images/Peaky Blinders.jpg" alt="Peaky Blinders"/>
+          <p>Peaky Blinders</p>
+          <span>Netflix - June 2026</span>
+        </article>
+
+        <article class="card" data-title="Sweetness">
+          <img src="Upcoming Images/OTT Images/Sweetness.jpg" alt="Sweetness"/>
+          <p>Sweetness</p>
+          <span>Netflix - May 2026</span>
+        </article>
+
+         <article class="card" data-title="The Dreadful">
+          <img src="Upcoming Images/OTT Images/The Dreadful.jpg" alt="The Dreadful"/>
+          <p>The Dreadful</p>
+          <span>Netflix - May 2026</span>
+        </article>
+
+         <article class="card" data-title="Gandhi Talks">
+          <img src="Upcoming Images/OTT Images/Gandhi Talks.jpg" alt="Gandhi Talks"/>
+          <p>Gandhi Talks</p>
+          <span>Netflix - May 2026</span>
+        </article>
+
+         <article class="card" data-title="The Wrecking Crew">
+          <img src="Upcoming Images/OTT Images/The Wrecking Crew.jpg" alt="The Wrecking Crew"/>
+          <p>The Wrecking Crew</p>
+          <span>Netflix - May 2026</span>
+        </article>
+
+        <article class="card" data-title="Man on The Run">
+          <img src="Upcoming Images/OTT Images/Man on The Run.jpg" alt="Man on The Run"/>
+          <p>Man on The Run</p>
+          <span>Netflix - May 2026</span>
+        </article>
+
+         <article class="card" data-title="The Beast Within">
+          <img src="Upcoming Images/OTT Images/The Beast Within.jpg" alt="The Beast Within"/>
+          <p>The Beast Within</p>
+          <span>Netflix - May 2026</span>
+        </article>
+
+        
+      </div>
+    </section>
+
+     <section class="section">
+
+      <h2>😍Upcoming Hollywood Movies😍</h2>
+
+      <div class="card-row">
+
+        <article class="card" data-title="Mercy">
+          <img src="Upcoming Images/Hollywood movies/Mercy.jpg" alt="Mercy"/>
+          <p>Mercy</p>
+          <span>Amazon Prime Video - March 2026</span>
+          The Raja Saab
+          2026 • Telugu • Horror / Comdey
+        </article>
+
+        <article class="card" data-title="Crime 101">
+          <img src="Upcoming Images/Hollywood movies/Crime 101.jpg" alt="Crime 101"/>
+          <p>Crime 101</p>
+          <span>Netflix - April 2026</span>
+        </article>
+
+         <article class="card" data-title="Hellfire">
+          <img src="Upcoming Images/Hollywood movies/Hellfire.jpg" alt="Hellfire"/>
+          <p>Hellfire</p>
+          <span>Disney Hotstar - Feb 2026</span>
+        </article>
+
+        <article class="card" data-title="Iron Lung">
+          <img src="Upcoming Images/Hollywood movies/Iron Lung.jpg" alt="Iron Lung"/>
+          <p>Iron Lung</p>
+          <span>Netflix - June 2026</span>
+        </article>
+
+        <article class="card" data-title="Send help">
+          <img src="Upcoming Images/Hollywood movies/Send help.jpg" alt="Send help"/>
+          <p>Send help</p>
+          <span>Netflix - May 2026</span>
+        </article>
+
+         <article class="card" data-title="Shelter">
+          <img src="Upcoming Images/Hollywood movies/Shelter.jpg" alt="Shelter"/>
+          <p>Shelter</p>
+          <span>Netflix - May 2026</span>
+        </article>
+
+         <article class="card" data-title="Marty Supreme">
+          <img src="Upcoming Images/Hollywood movies/Marty Supreme.jpg" alt="Marty Supreme"/>
+          <p>Marty Supreme</p>
+          <span>Netflix - May 2026</span>
+        </article>
+
+         <article class="card" data-title="H is for Hawk">
+          <img src="Upcoming Images/Hollywood movies/H is for Hawk.jpg" alt="H is for Hawk"/>
+          <p>H is for Hawk</p>
+          <span>Netflix - May 2026</span>
+        </article>
+
+        <article class="card" data-title="Wasteman">
+          <img src="Upcoming Images/Hollywood movies/Wasteman.jpg" alt="Wasteman"/>
+          <p>Wasteman</p>
+          <span>Netflix - May 2026</span>
+        </article>
+
+         <article class="card" data-title="We Bury the Dead">
+          <img src="Upcoming Images/Hollywood movies/We Bury the Dead.jpg" alt="We Bury the Dead"/>
+          <p>We Bury the Dead</p>
+          <span>Netflix - May 2026</span>
+        </article>
+
+         <article class="card" data-title="Return of Silent Hill">
+          <img src="Upcoming Images/Hollywood movies/Return of Silent hill.jpg" alt="Return of Silent hill"/>
+          <p>Return of Silent Hill</p>
+          <span>Netflix - May 2026</span>
+        </article>
+
+     </div>
+    </section>
+  </main>
+
+  
+<!-- SEARCH FUNCTIONALITY -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const searchBox = document.getElementById("searchBox");
+  const sections = document.querySelectorAll(".section");
+
+  // Create centered No Results message
+  const noResult = document.createElement("div");
+  noResult.classList.add("no-results");
+  noResult.textContent = "🎬 No movies found";
+  document.body.appendChild(noResult);
+
+  searchBox.addEventListener("input", () => {
+
+    const query = searchBox.value.toLowerCase().trim();
+    let totalMatches = 0;
+
+    sections.forEach(section => {
+
+      const heading = section.querySelector("h2");
+      const cards = section.querySelectorAll(".card");
+      let sectionHasMatch = false;
+
+      cards.forEach(card => {
+
+        const title =
+          card.dataset.title?.toLowerCase().trim() || "";
+
+        const text =
+          card.querySelector("p")?.textContent.toLowerCase().trim() || "";
+
+        const badge =
+          card.querySelector("span")?.textContent.toLowerCase().trim() || "";
+
+        const match =
+          title.includes(query) ||
+          text.includes(query) ||
+          badge.includes(query);
+
+        if (query === "" || match) {
+          card.style.display = "";
+          sectionHasMatch = true;
+          totalMatches++;
+        } else {
+          card.style.display = "none";
+        }
+
+      });
+
+      if (query === "") {
+        section.style.display = "";
+        heading.style.display = "";
+      } else if (sectionHasMatch) {
+        section.style.display = "";
+        heading.style.display = "none";
+      } else {
+        section.style.display = "none";
+      }
+
+    });
+
+    noResult.style.display =
+      (query !== "" && totalMatches === 0) ? "block" : "none";
+
+  });
+
+  /* Card Animation */
+  const cards = document.querySelectorAll(".card");
+  cards.forEach((card, index) => {
+    setTimeout(() => {
+      card.classList.add("card-visible");
+    }, index * 60);
+  });
+
+});
+</script>
+
+
+
+
+<script src="jst.js"></script>
+
+</body>
+</html>

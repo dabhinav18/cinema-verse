@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
+
+  <title>Login page</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  font-family: 'Cinzel', serif;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: white;
+}
+
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("Images/bcakground\ image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.login-card {
+  width: 330px;
+  padding: 40px 35px 30px;
+  background: rgba(0, 0, 0, 0.2); /* 0 = fully transparent, 1 = solid */
+  border-radius: 12px;
+  backdrop-filter: blur(6px);     /* optional glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+
+    .login-card h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+.input-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 0;      /* square corners */
+  border: 1px solid #ffffff55;
+  background: transparent;
+  color: #fff;
+  outline: none;
+}
+
+
+    .input-group input::placeholder {
+      color: #cccccc;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .row a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .row a:hover {
+      text-decoration: underline;
+    }
+
+   .btn-login {
+      width: 100%;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 0;
+      background: #ffffff;
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 14px;
+    }
+
+    .btn-login:hover {
+      background: #b00f0f;
+    } 
+
+   
+
+    .bottom-text {
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .bottom-text a {
+      color: #ffffff;
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 4px;
+    }
+
+    .bottom-text a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* ========================= */
+/* 📱 MOBILE RESPONSIVE ONLY */
+/* ========================= */
+
+@media (max-width: 480px) {
+
+  body {
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 25px 20px;
+  }
+
+  .login-card h2 {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .site-name {
+    font-size: 20px;
+    left: 15px;
+    top: 15px;
+  }
+
+  .input-group input {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  .btn-login {
+    padding: 9px 0;
+    font-size: 14px;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .bottom-text {
+    font-size: 12px;
+  }
+
+}
+/* ========================= */
+/* 📱 STRONG MOBILE FIX */
+/* ========================= */
+
+@media screen and (max-width: 600px) {
+
+  body {
+    padding: 15px;
+  }
+
+  .login-card {
+    width: 90% !important;
+    max-width: 320px !important;
+    padding: 25px 18px !important;
+  }
+
+  .login-card h2 {
+    font-size: 22px;
+  }
+
+  .site-name {
+    font-size: 20px;
+    left: 15px;
+    top: 15px;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+}
+
+
+  </style>
+</head>
+
+<body>
+<div class="left-nav">
+    <div class="logo">Cinema verse</div>
+  </div>
+
+
+  <div class="login-card">
+    <!-- ONE COMMON TITLE FOR BOTH PAGES -->
+    <h2 id="form-title">Login</h2>
+
+    <!-- LOGIN FORM -->
+    <form id="login-form">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          placeholder="Enter your username"
+          required
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          placeholder="Enter your password"
+          required
+        />
+      </div>
+
+      <div class="row">
+        <label>
+          <input type="checkbox" /> Remember Me
+        </label>
+        <a href="#">Forget Password?</a>
+      </div>
+
+      <button class="btn-login" type="submit">Login</button>
+
+      <p class="bottom-text">
+        Don't have an account?
+        <button type="button" id="show-register">Sign Up</button>
+      </p>
+    </form>
+
+    <!-- REGISTER FORM -->
+    <form id="register-form" style="display:none;">
+      <!-- REMOVE THIS LINE:
+      <h2>Sign Up</h2>
+      -->
+
+      <div class="input-group">
+        <label for="reg-email">Email</label>
+        <input id="reg-email" type="email" placeholder="Enter your email" required />
+      </div>
+
+      <div class="input-group">
+        <label for="reg-username">Username</label>
+        <input id="reg-username" type="text" placeholder="Choose your username" required />
+      </div>
+
+      <div class="input-group">
+        <label for="reg-password">Password</label>
+        <input id="reg-password" type="password" placeholder="Enter your password" required />
+      </div>
+
+      <button class="btn-login" type="submit">Save</button>
+
+      <p class="bottom-text">
+        Already have an account?
+        <button type="button" id="show-login">Back to Login</button>
+      </p>
+    </form>
+  </div>
+  
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const loginForm = document.getElementById("login-form");
+  const registerForm = document.getElementById("register-form");
+  const btnShowLogin = document.getElementById("show-login");
+  const btnShowRegister = document.getElementById("show-register");
+  const formTitle = document.getElementById("form-title");
+
+  /* ================= FORM SWITCH ================= */
+  btnShowRegister.onclick = () => {
+    loginForm.style.display = "none";
+    registerForm.style.display = "block";
+    formTitle.textContent = "Sign Up";
+  };
+
+  btnShowLogin.onclick = () => {
+    registerForm.style.display = "none";
+    loginForm.style.display = "block";
+    formTitle.textContent = "Login";
+  };
+
+  /* ================= SIGN UP ================= */
+  registerForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("reg-email").value.trim();
+    const username = document.getElementById("reg-username").value.trim();
+    const password = document.getElementById("reg-password").value.trim();
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const userExists = users.some(
+      user => user.username === username || user.email === email
+    );
+
+    if (userExists) {
+      alert("❌ User already exists!");
+      return;
+    }
+
+    users.push({ email, username, password });
+    localStorage.setItem("users", JSON.stringify(users));
+
+    registerForm.reset();
+    btnShowLogin.click();
+  });
+
+  /* ================= LOGIN ================= */
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const usernameInput = document.getElementById("username").value.trim();
+    const passwordInput = document.getElementById("password").value.trim();
+
+    /* ========== ADMIN LOGIN ========== */
+    if (
+      usernameInput === "dabhinav1818@gmail.com" &&
+      passwordInput === "Password@358"
+    ) {
+      localStorage.setItem("isAdmin", "true");
+      localStorage.setItem(
+        "loggedInUser",
+        JSON.stringify({
+          email: "dabhinav1818@gmail.com",
+          username: "Admin",
+          role: "admin"
+        })
+      );
+
+      window.location.href = "explore.html";
+      return;
+    }
+
+    /* ========== USER LOGIN ========== */
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const validUser = users.find(
+      user =>
+        (user.username === usernameInput || user.email === usernameInput) &&
+        user.password === passwordInput
+    );
+
+    if (validUser) {
+      localStorage.setItem("isAdmin", "false");
+      localStorage.setItem("loggedInUser", JSON.stringify(validUser));
+
+      window.location.href = "explore.html";
+    } else {
+      alert("❌ Invalid email/username or password");
+    }
+  });
+
+});
+</script>
+
+</body>
+  
+
+</html>

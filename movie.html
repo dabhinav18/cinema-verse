@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CinemaVerse | Movie Details</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap" rel="stylesheet">  <!-- logo font style -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="moviecss.css">
+<link rel="stylesheet" href="cst.css">
+
+<style>
+  /* ========================================= */
+/* 🍎 iPhone 12 Pro ONLY (390px) */
+/* FULL MOBILE RESPONSIVE */
+/* ========================================= */
+
+
+</style>
+</head>
+<body>
+  
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="left-nav">
+    <div class="logo">Cinema verse</div>
+  </div>
+
+  
+
+  <nav class="nav-links">
+    <a href="explore.html">Explore</a>
+    <a href="upcoming.html">Upcoming</a>
+    <a href="about.html">About</a>
+
+    <div class="profile-menu" id="profileMenu">
+      <button class="profile-btn" id="profileBtn">Profile</button>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="profile.html">My Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="index.html" class="logout">Logout</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <img id="heroImg" class="hero-img">
+  <div class="hero-content">
+    <h1 id="movieTitle"></h1>
+    <p id="movieMeta"></p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Overview</h2>
+  <p id="movieOverview"></p>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+<h2 class="people-title">Cast</h2>
+
+  <div class="people-wrapper" id="castList"></div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+ <h2 class="people-title">Crew</h2>
+
+  <div class="people-wrapper" id="crewList"></div>
+</section>
+
+<div class="divider"></div>
+<section class="section meter-section">
+  <h2>Audience Meter</h2>
+
+  <div class="premium-meter">
+    <svg class="progress-ring" width="180" height="180">
+      <circle class="ring-bg" cx="90" cy="90" r="80" />
+      <circle class="arc skip" cx="90" cy="90" r="80" />
+      <circle class="arc timepass" cx="90" cy="90" r="80" />
+      <circle class="arc good" cx="90" cy="90" r="80" />
+      <circle class="arc outstanding" cx="90" cy="90" r="80" />
+    </svg>
+
+    <div class="meter-text">
+      <h3 id="meterPercent">0%</h3>
+      <p id="voteCount">0 Votes</p>
+    </div>
+  </div>
+
+  <div class="meter-legend">
+    <div class="legend-item skip">
+      <span class="dot"></span> Skip <b id="countSkip">0</b>
+    </div>
+    <div class="legend-item timepass">
+      <span class="dot"></span> Timepass <b id="countTimepass">0</b>
+    </div>
+    <div class="legend-item good">
+      <span class="dot"></span> Good <b id="countGood">0</b>
+    </div>
+    <div class="legend-item outstanding">
+      <span class="dot"></span> Outstanding <b id="countOutstanding">0</b>
+    </div>
+  </div>
+</section>
+
+
+
+<div class="divider"></div>
+
+<!-- ================= REVIEWS ================= -->
+<section class="section">
+  <h2>User Reviews</h2>
+
+  <!-- PREMIUM REVIEW FORM -->
+<div class="review-card" id="reviewBox">
+
+    <div class="review-header">
+      <div class="user-info">
+        <div class="avatar" id="userAvatar">U</div>
+        <span class="username" id="username">@user</span>
+      </div>
+
+      <div class="rating-pills">
+        <button class="pill skip active" data-type="Skip">Skip</button>
+        <button class="pill timepass" data-type="Timepass">Timepass</button>
+        <button class="pill good" data-type="Good">Good</button>
+        <button class="pill outstanding" data-type="Outstanding">Outstanding</button>
+      </div>
+    </div>
+
+    <textarea
+      class="review-input"
+      id="reviewText"
+      placeholder="Write your review here..."
+      maxlength="1000"
+    ></textarea>
+
+    <div class="review-footer">
+      <span class="char-count" id="charCount">0 / 1000</span>
+      <button class="post-btn" onclick="postReview()">Post</button>
+    </div>
+
+  </div>
+
+  <!-- POSTED REVIEWS -->
+  <div id="reviewList"></div>
+</section>
+
+<script src="movie_js.js"></script>
+<script src="movie_database.js"></script>
+<script src="jst.js"></script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+/* ===============================
+   GLOBAL RESET
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===============================
+   BODY
+================================ */
+body{
+ background:
+    radial-gradient(circle at top left, #3B1C6E 0%, transparent 30%),
+    radial-gradient(circle at center right, #6A173A 0%, transparent 35%),
+    radial-gradient(circle at bottom, #110b1a 0%, transparent 70%),
+     radial-gradient(circle at bottom left, #3B1C6E 0%, transparent 30%),
+    #050507;
+
+
+  color:#fff;
+  padding-top:70px;
+  font-family:Inter,Arial;
+}
+
+
+/* ===============================
+   NAVBAR (FIXED + TRANSPARENT)
+================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 1000;
+
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  background: rgba(0, 0, 0, 0.7);
+  transition: background 0.3s ease;
+}
+
+
+/* ===============================
+   LEFT NAV
+================================ */
+.left-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-family: 'Cinzel', serif;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: white;
+}
+
+/* SEARCH BOX */
+#searchBox {
+  margin-left:auto;
+  width: 150px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  outline: none;
+  background: #1f1f2b;
+  color: hwb(0 100% 0%);
+  font-size: 14px;
+}
+
+#searchBox::placeholder {
+  color: #888;
+}
+
+#searchBox:focus {
+  background: #2a2a3d;
+}
+
+/* ===============================
+   NAV LINKS
+================================ */
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a,
+.nav-links span {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #bbb;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav-links .active {
+  color: #fff;
+  cursor: default;
+}
+
+/* ===============================
+   PROFILE DROPDOWN
+================================ */
+.profile-menu {
+  position: relative;
+  margin-left: 25px;
+}
+
+/* Profile button */
+.profile-btn {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.profile-btn:hover {
+  color: #fff;
+}
+
+/* Dropdown box */
+.profile-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  width: 160px;
+
+  background: rgba(31, 31, 43, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+
+  display: none;
+  flex-direction: column;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  z-index: 2000;
+}
+
+/* Show dropdown */
+.profile-menu.active .profile-dropdown {
+  display: flex;
+}
+
+/* Dropdown links */
+.profile-dropdown a {
+  padding: 12px 15px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.profile-dropdown a:hover {
+  background: #2a2a3d;
+}
+
+/* Logout color */
+.profile-dropdown .logout {
+  color: #ff6b6b;
+}
+
+/* ===============================
+   MAIN CONTENT
+================================ */
+main {
+  margin-top: 10px;     /* space for fixed navbar */
+  max-width: 1400px;
+  margin-left: 100px;
+  margin-right: auto;
+}
+
+/* ===============================
+   SECTION
+================================ */
+.section {
+  margin-top: 10px;
+  padding: 30px 20px;
+}
+
+.section h2 {
+  margin-top: 1px;
+  font-size: 23px;
+  margin-bottom: 25px;
+}
+
+/* ===============================
+   POSTER GRID
+================================ */
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(5, 180px);
+  column-gap: 15px;
+  row-gap: 20px; /* 👈 vertical gap */
+  justify-content: start;
+}
+
+
+/* CARD */
+.card {
+  cursor: pointer;
+  text-align: center;
+}
+.card img {
+  width: 95%;
+  height: 260px;            /* matches screenshot */
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.65);
+  transition: transform 0.35s ease;
+}
+
+.card:hover img {
+  transform: scale(1.03);
+}
+
+.card p {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card span {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  main {
+    max-width: 100%;
+  }
+}
+
+
+/* ================================
+   MOBILE & TABLET RESPONSIVE
+================================ */
+
+/* TABLET (max-width: 1024px) */
+@media (max-width: 1024px) {
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  
+  .left-nav {
+    width: 60%;
+    justify-content: space-between;
+  }
+  .logo {
+    font-size: 18px;
+  }
+  main {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .card-row {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+/* MOBILE (max-width: 768px) */
+@media (max-width: 768px) {
+
+  /* NAVBAR STACK */
+  .navbar {
+    height: auto;
+    flex-wrap: wrap;
+    padding: 12px 16px;
+  }
+
+  .left-nav {
+    width: 40%;
+    justify-content: space-between;
+  }
+  .logo {
+    font-size: 14px;
+  }
+
+  /* SEARCH BOX */
+  #searchBox {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  /* NAV LINKS */
+  .nav-links {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+
+  .navbar nav a {
+    margin-left: 0;
+    font-size: 14px;
+  }
+
+  /* POSTERS */
+  .card-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .card img {
+    width: 120px;
+    height: 180px;
+  }
+
+  h2 {
+    font-size: 18px;
+    text-align: center;
+  }
+}
+
+/* SMALL MOBILE (max-width: 480px) */
+@media (max-width: 480px) {
+
+  .navbar {
+    padding: 10px;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  #searchBox {
+    font-size: 12px;
+    padding: 7px 10px;
+  }
+
+  .nav-links {
+    font-size: 13px;
+  }
+
+  .card-row {
+    grid-template-columns: 1fr;
+  }
+
+  .card img {
+    width: 90px;
+    height: 140px;
+  }
+}
+/* DESKTOP – 5 POSTERS (DEFAULT) */
+.card-row {
+  grid-template-columns: repeat(5, 180px);
+}
+
+/* TABLET – 3 POSTERS */
+@media (max-width: 1024px) {
+  .card-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* MOBILE – 2 POSTERS */
+@media (max-width: 600px) {
+  .card-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .navbar {
+    padding: 0 15px;
+  }
+
+  #searchBox {
+    width: 140px;
+  }
+}

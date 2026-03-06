@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
+<title>About | CinemaVerse</title>
+<link rel="stylesheet" href="cst.css">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+
+/* ================= HERO ================= */
+
+.about-hero{
+  min-height:50vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+
+}
+
+
+.hero-content{
+  text-align:center;
+  animation:fadeIn 1s ease-in-out;
+}
+
+.hero-content h1{
+  font-size:4rem;
+  font-weight:900;
+  letter-spacing:4px;
+}
+
+.hero-content span{
+  display:block;
+  margin-top:15px;
+  letter-spacing:5px;
+  font-size:1rem;
+  opacity:.8;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:none}
+}
+
+
+.hero-title{
+  font-size:4rem;
+  font-weight:900;
+  letter-spacing:4px;
+  opacity:0;
+  transform:scale(1.2);
+  animation:heroZoom 1.0s ease forwards;
+}
+
+@keyframes heroZoom{
+  to{
+    opacity:1;
+    transform:scale(1);
+    filter:blur(0);
+  }
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+  max-width:1100px;
+  margin:auto;
+  padding:80px 30px;
+}
+
+.section h2{
+  font-size:2rem;
+  color:var(--gold);
+  margin-bottom:20px;
+}
+
+.section p{
+  font-size: 21px;
+  max-width:950px;
+  color:#ccc;
+  line-height:1.7;
+}
+
+
+/* ===== CINEMATIC TEXT ANIMATION ===== */
+
+.section h2{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s cubic-bezier(.17,.67,.32,1);
+}
+
+.section p{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s cubic-bezier(.17,.67,.32,1);
+  transition-delay:.3s;
+}
+
+/* When visible */
+.section.show h2{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.section.show p{
+  opacity:1;
+  transform:translateY(0);
+}
+
+
+/* ================= FEATURES ================= */
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap: 25px;
+  margin-top:30px;
+}
+
+.feature{
+  padding:25px;
+  border-radius:12px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  transition:.5s;
+  transform:translateY(30px);
+  opacity:0;
+}
+
+.feature.show{
+  transform:translateY(0);
+  opacity:1;
+}
+
+.feature:hover{
+  transform:translateY(-8px) scale(1.03);
+  box-shadow:0 10px 30px rgba(250,204,21,.2);
+}
+
+
+
+.feature h3{
+  margin-bottom:10px;
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline{
+  display:grid;
+  gap:25px;
+  margin-top:30px;
+}
+
+.step{
+  display:flex;
+  gap:15px;
+  transform:translateX(-40px);
+  opacity:0;
+  transition:.6s ease;
+}
+
+.step.show{
+  transform:translateX(0);
+  opacity:1;
+}
+
+/* ================= SCROLL REVEAL ================= */
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+
+
+
+/* ================= RESPONSIVE ================= */
+
+
+/* ===================================== */
+/* 🍎 iPhone 12 Pro (390px) Responsive */
+/* ===================================== */
+
+@media screen and (max-width: 430px) {
+
+  /* NAVBAR STACK */
+  .navbar {
+    flex-wrap: wrap;
+    padding: 12px 14px;
+    height: auto;
+  }
+
+  .left-nav {
+    width: 50%;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  
+
+  /* Nav links */
+  .nav-links {
+    width: 100%;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5px;
+    margin-top: 12px;
+  }
+
+  .nav-links a,
+  .profile-btn {
+    font-size: 13px;
+  }
+}
+
+
+  
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="left-nav">
+    <div class="logo">Cinema verse</div>
+  </div>
+
+  <nav class="nav-links">
+  <a href="explore.html">Explore</a>
+
+
+    <a href="upcoming.html">Upcoming</a>
+    <a href="about.html" class="active">About</a>
+
+    <div class="profile-menu" id="profileMenu">
+      <button class="profile-btn" id="profileBtn">Profile</button>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="profile.html">My Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="index.html" class="logout">Logout</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<!-- HERO -->
+<section class="about-hero">
+  <div class="hero-content">
+   <h1 class="hero-title">Cinema Verse</h1>
+    <span>WHERE CINEMA LIVES</span>
+  </div>
+</section>
+
+
+
+<!-- ABOUT -->
+<section class="section reveal">
+  <h2>Cinema Verse</h2>
+  <p>
+    CinemaVerse is a premium movie discovery platform built for true cinema lovers.
+    From trending blockbusters to future releases, we bring movies, reviews, and
+    community together in one immersive space.
+  </p>
+</section>
+
+<!-- FEATURES -->
+<section class="section reveal">
+  <h2>Features</h2>
+  <div class="features">
+    <div class="feature">
+      <h3>🎬 Discover</h3>
+      <p>Trending and upcoming movies curated daily.</p>
+    </div>
+    <div class="feature">
+      <h3>⭐ Honest Reviews</h3>
+      <p>One verified review per user ensures authenticity.</p>
+    </div>
+    <div class="feature">
+      <h3>📊 Ratings</h3>
+      <p>Audience-powered rating meters.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="section reveal">
+  <h2>Vision Ahead</h2>
+  <div class="timeline">
+    <div class="step"><span>🚀</span><p>Personalized recommendations.</p></div>
+    <div class="step"><span>🎞️</span><p>Trailers and exclusive previews.</p></div>
+    <div class="step"><span>🔐</span><p>Secure profiles and moderation.</p></div>
+    <div class="step"><span>📺</span><p>OTT streaming integration.</p></div>
+  </div>
+</section>
+
+<script src="jst.js"></script>
+<script>
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{threshold:0.2});
+
+document.querySelectorAll('.reveal, .feature, .step')
+.forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
